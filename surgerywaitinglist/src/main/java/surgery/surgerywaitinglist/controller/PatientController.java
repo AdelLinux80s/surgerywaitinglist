@@ -21,9 +21,16 @@ public class PatientController {
 		return patientService.patientGetOne(studentId);
 	}
 	
+	public List<Patient> patientGetAll(){
+		return patientService.patientGetAll();
+	}
 	
 	public Patient addPatient(Patient patient) {
 		return patientService.addPatient(patient);
+	}
+	
+	public Patient removePatient(Long patientId) {
+		return patientService.removePatient(patientId);
 	}
 	
 	

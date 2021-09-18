@@ -1,5 +1,7 @@
 package surgery.surgerywaitinglist.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,10 @@ public class SurgeonController {
 	public Surgeon surgeonGetOne(Long surgeonId) {
 		return surgeonService.surgeonGetOne(surgeonId);
 	}
+	
+	public List<Surgeon> surgeonGetAll(){
+		return surgeonService.surgeonGetAll();
+		}
 	
 	
 	public Surgeon addSurgeon(Surgeon surgeon) {

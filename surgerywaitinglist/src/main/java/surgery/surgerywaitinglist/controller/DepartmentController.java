@@ -16,6 +16,10 @@ public class DepartmentController {
 		departmentService.departmentGetOne(departmentId);
 	}
 	
+	public List<Department> departmentGetAll(){
+		return departmentService.departmentGetAll();
+	}
+	
 	public Department addDepartment(Department department) {
 		departmentService.addDepartment(department);
 	}
