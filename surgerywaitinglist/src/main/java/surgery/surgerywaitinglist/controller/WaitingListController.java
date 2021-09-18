@@ -13,6 +13,7 @@ public class WaitingListController {
 	@Autowired
 	private WaitingListService waitingListService;
 
+	
 	public List<WaitingList> waitingListgetAll() {
 		return waitingListService.waitingListgetAll();
 	}

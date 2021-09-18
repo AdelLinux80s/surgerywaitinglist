@@ -16,14 +16,15 @@ public class PatientController {
 	@Autowired
 	private PatientService patientService;
 	
+	public List<Patient> patientGetAll(){
+		return patientService.patientGetAll();
+	}
 	
 	public Patient patientGetOne(Long studentId) {
 		return patientService.patientGetOne(studentId);
 	}
 	
-	public List<Patient> patientGetAll(){
-		return patientService.patientGetAll();
-	}
+	
 	
 	public Patient addPatient(Patient patient) {
 		return patientService.addPatient(patient);
