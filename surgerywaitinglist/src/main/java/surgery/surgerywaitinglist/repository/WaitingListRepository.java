@@ -1,5 +1,9 @@
 package surgery.surgerywaitinglist.repository;
 
-public interface WaitingListRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import surgery.surgerywaitinglist.entity.WaitingList;
+
+public interface WaitingListRepository extends JpaRepository<WaitingList, Long>{
 
 }

@@ -1,5 +1,10 @@
 package surgery.surgerywaitinglist.repository;
 
-public interface DepartmentRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import surgery.surgerywaitinglist.entity.Department;
+
+
+public interface DepartmentRepository extends JpaRepository<Department, Long>{
 
 }
