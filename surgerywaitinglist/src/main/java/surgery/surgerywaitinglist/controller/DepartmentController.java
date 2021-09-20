@@ -23,7 +23,7 @@ public class DepartmentController {
 	
 	@GetMapping(value="{departmentId}")
 	public Department departmentGetOne(@PathVariable Long departmentId) {
-		departmentService.departmentGetOne(departmentId);
+		return departmentService.departmentGetOne(departmentId);
 	}
 	@GetMapping
 	public List<Department> departmentGetAll(){
@@ -31,10 +31,10 @@ public class DepartmentController {
 	}
 	@PostMapping
 	public Department addDepartment(@RequestBody Department department) {
-		departmentService.addDepartment(department);
+		return departmentService.addDepartment(department);
 	}
 	@DeleteMapping(value="{departmentId}")
 	public Department removeDepartment(@PathVariable Long departmentId) {
-		departmentService.removeDepartment(departmentId);
+		return departmentService.removeDepartment(departmentId);
 	}
 }
