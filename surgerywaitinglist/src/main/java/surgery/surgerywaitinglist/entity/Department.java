@@ -26,4 +26,12 @@ public class Department {
 	@JoinColumn(name = "department_id")
 	private Set<Surgeon> surgeons = new HashSet<>();
 	
+	
+	public void addSurgeonToDepartmentList(Surgeon surgeon) {
+		surgeons.add(surgeon);
+	}
+	
+	public void removeSurgeonToDepartmentList(Surgeon surgeon) {
+		surgeons.remove(surgeon);
+	}
 }
