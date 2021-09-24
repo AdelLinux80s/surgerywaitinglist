@@ -32,33 +32,33 @@ public class WaitingListController {
 	}
 
 	@PostMapping
-	public WaitingList addToWaitingList(@RequestBody WaitingList surgery) {
-		return waitingListService.AddToWaitingList(surgery);
+	public WaitingList addCaseToWaitingList(@RequestBody WaitingList surgery) {
+		return waitingListService.addCaseToWaitingList(surgery);
 	}
 
 	@DeleteMapping(value="{waitingListId}")
-	public WaitingList removeFromWaitingList(@PathVariable Long waitingListId) {
-		return waitingListService.removeFromWaitingList(waitingListId);
+	public WaitingList removeCaseFromWaitingList(@PathVariable Long waitingListId) {
+		return waitingListService.removeCaseFromWaitingList(waitingListId);
 	}
 
 	@PostMapping(value="{waitingListId}/patient/{patientId}/add")
-	public WaitingList addPatientToWaitingList(@PathVariable Long patientId, @PathVariable Long waitingListId) {
-		return waitingListService.addPatientToWaitingList(patientId, waitingListId);
+	public WaitingList setPatientToWaitingList(@PathVariable Long patientId, @PathVariable Long waitingListId) {
+		return waitingListService.setPatientToWaitingList(patientId, waitingListId);
 	}
 
 	@DeleteMapping(value="{waitingListId}/patient/{patientId}/remove")
-	public WaitingList removePatientFromWaitingList(@PathVariable Long patientId, @PathVariable Long waitingListId) {
-		return waitingListService.removePatientFromWaitingList(patientId, waitingListId);
+	public WaitingList unsetPatientFromWaitingList(@PathVariable Long patientId, @PathVariable Long waitingListId) {
+		return waitingListService.unsetPatientFromWaitingList(patientId, waitingListId);
 	}
 	
 	@PostMapping(value="{waitingListId}/surgeon/{surgeonId}/add")
-	public WaitingList addSurgeonToWaitingList(@PathVariable Long surgeonId, @PathVariable Long waitingListId) {
-		return waitingListService.addSurgeonToWaitingList(surgeonId,waitingListId);
+	public WaitingList setSurgeonToWaitingList(@PathVariable Long surgeonId, @PathVariable Long waitingListId) {
+		return waitingListService.setSurgeonToWaitingList(surgeonId, waitingListId);
 	}
 	
 	@DeleteMapping(value="{waitingListId}/surgeon/{surgeonId}/remove")
-	public WaitingList removeSurgeonFromWaitingList(@PathVariable Long surgeonId, @PathVariable Long waitingListId) {
-		return waitingListService.addSurgeonToWaitingList(surgeonId, waitingListId);
+	public WaitingList unsetSurgeonFromWaitingList(@PathVariable Long surgeonId, @PathVariable Long waitingListId) {
+		return waitingListService.unsetSurgeonToWaitingList(surgeonId, waitingListId);
 	}
 	
 	

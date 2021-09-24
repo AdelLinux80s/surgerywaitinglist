@@ -37,4 +37,14 @@ public class DepartmentController {
 	public Department removeDepartment(@PathVariable Long departmentId) {
 		return departmentService.removeDepartment(departmentId);
 	}
+	
+	@PostMapping(value="{departmentId}/surgeon/{surgeonId}/add")
+	public Department addSurgeonToDepartment(@PathVariable Long departmentId, @PathVariable Long surgeonId) {
+		return departmentService.addSurgeonToDepartment(departmentId, surgeonId);
+		
+	}
+	@DeleteMapping(value="{departmentId}/surgeon/{surgeonId}/remove")
+	public Department removeSurgeonToDepartment(@PathVariable Long departmentId, @PathVariable Long surgeonId) {
+		return departmentService.removeSurgeonToDepartment(departmentId, surgeonId);
+	}
 }

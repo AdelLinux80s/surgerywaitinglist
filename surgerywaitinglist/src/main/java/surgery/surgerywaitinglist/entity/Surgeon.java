@@ -31,9 +31,10 @@ public class Surgeon {
 	private String surgeonEmailAddress;
 	private String surgeonSpeciality;
 	
-	@ManyToOne
-	@JsonIgnore
-	private Department department;
+	//private Long department_id;
+	//@ManyToOne
+	//@JsonIgnore
+	//private Department department;
 	
 	
 	

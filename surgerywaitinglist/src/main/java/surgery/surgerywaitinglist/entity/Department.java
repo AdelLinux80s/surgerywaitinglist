@@ -22,6 +22,7 @@ public class Department {
 	@GeneratedValue
 	private Long departmentId;
 	private String departmentName;
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "department_id")
 	private Set<Surgeon> surgeons = new HashSet<>();
