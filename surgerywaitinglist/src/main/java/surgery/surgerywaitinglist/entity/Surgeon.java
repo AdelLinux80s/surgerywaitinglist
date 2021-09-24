@@ -5,10 +5,9 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import lombok.Data;
 
@@ -31,11 +30,12 @@ public class Surgeon {
 	private String surgeonEmailAddress;
 	private String surgeonSpeciality;
 	
-	//private Long department_id;
+	
 	//@ManyToOne
 	//@JsonIgnore
 	//private Department department;
-	
+	private Long departmentIdInSurgery;
+
 	
 	
 	

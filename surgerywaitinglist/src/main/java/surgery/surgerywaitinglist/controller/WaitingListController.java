@@ -46,6 +46,7 @@ public class WaitingListController {
 		return waitingListService.setPatientToWaitingList(patientId, waitingListId);
 	}
 
+	//To be edited
 	@DeleteMapping(value="{waitingListId}/patient/{patientId}/remove")
 	public WaitingList unsetPatientFromWaitingList(@PathVariable Long patientId, @PathVariable Long waitingListId) {
 		return waitingListService.unsetPatientFromWaitingList(patientId, waitingListId);
@@ -56,6 +57,7 @@ public class WaitingListController {
 		return waitingListService.setSurgeonToWaitingList(surgeonId, waitingListId);
 	}
 	
+	//To be edited
 	@DeleteMapping(value="{waitingListId}/surgeon/{surgeonId}/remove")
 	public WaitingList unsetSurgeonFromWaitingList(@PathVariable Long surgeonId, @PathVariable Long waitingListId) {
 		return waitingListService.unsetSurgeonToWaitingList(surgeonId, waitingListId);

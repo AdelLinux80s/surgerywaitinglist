@@ -59,7 +59,7 @@ public class WaitingListService {
 		WaitingList waitingList =  waitingListGetOne(waitingListId);
 		Surgeon surgeon = surgeonService.surgeonGetOne(surgeonId);
 		waitingList.setWaitingListSurgeonId(surgeonId);
-		waitingList.setWaitingListDepartmentId(surgeon.getDepartment().getDepartmentId());
+		waitingList.setWaitingListDepartmentId(surgeon.getDepartmentIdInSurgery());
 		return waitingList;
 	}
 

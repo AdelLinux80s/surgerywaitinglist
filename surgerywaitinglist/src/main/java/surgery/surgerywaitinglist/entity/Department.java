@@ -23,16 +23,17 @@ public class Department {
 	private Long departmentId;
 	private String departmentName;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "department_id")
-	private Set<Surgeon> surgeons = new HashSet<>();
+	//@OneToMany(cascade = CascadeType.ALL)
+	//@JoinColumn(name = "department_id")
+	//private Set<Surgeon> surgeons = new HashSet<>();
 	
 	
-	public void addSurgeonToDepartmentList(Surgeon surgeon) {
-		surgeons.add(surgeon);
-	}
 	
-	public void removeSurgeonToDepartmentList(Surgeon surgeon) {
-		surgeons.remove(surgeon);
-	}
+	//public void addSurgeonToDepartmentList(Surgeon surgeon) {
+	//	surgeons.add(surgeon);
+	//}
+	
+	//public void removeSurgeonToDepartmentList(Surgeon surgeon) {
+	//	surgeons.remove(surgeon);
+	//}
 }
