@@ -43,11 +43,11 @@ public class SurgeonController {
 		return surgeonService.removeSurgeon(surgeonId);
 	}
 	
-	@PostMapping(value="{surgeonId}/department/{departmentId}/add")
+	@PutMapping(value="{surgeonId}/department/{departmentId}/set-department")
 	public Surgeon setDepartmentToSurgeon(@PathVariable Long surgeonId, @PathVariable Long departmentId) {
 		return  surgeonService.setDepartmentToSurgeon(surgeonId, departmentId);
 	}
-	@DeleteMapping(value="{surgeonId}/remove")
+	@PutMapping(value="{surgeonId}/unset-department")
 	public Surgeon unsetDepartmentToSurgeon(@PathVariable Long surgeonId) {
 		return  surgeonService.unsetDepartmentToSurgeon(surgeonId);
 	}

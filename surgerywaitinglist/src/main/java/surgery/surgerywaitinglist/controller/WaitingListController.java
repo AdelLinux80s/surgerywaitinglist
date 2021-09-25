@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,26 +42,26 @@ public class WaitingListController {
 		return waitingListService.removeCaseFromWaitingList(waitingListId);
 	}
 
-	@PostMapping(value="{waitingListId}/patient/{patientId}/add")
+	@PutMapping(value="{waitingListId}/patient/{patientId}/set-patient")
 	public WaitingList setPatientToWaitingList(@PathVariable Long patientId, @PathVariable Long waitingListId) {
 		return waitingListService.setPatientToWaitingList(patientId, waitingListId);
 	}
 
-	//To be edited
-	@DeleteMapping(value="{waitingListId}/patient/{patientId}/remove")
-	public WaitingList unsetPatientFromWaitingList(@PathVariable Long patientId, @PathVariable Long waitingListId) {
-		return waitingListService.unsetPatientFromWaitingList(patientId, waitingListId);
+	
+	@PutMapping(value="{waitingListId}/unset-patient")
+	public WaitingList unsetPatientFromWaitingList(@PathVariable Long waitingListId) {
+		return waitingListService.unsetPatientFromWaitingList(waitingListId);
 	}
 	
-	@PostMapping(value="{waitingListId}/surgeon/{surgeonId}/add")
+	@PutMapping(value="{waitingListId}/surgeon/{surgeonId}/set-surgeon")
 	public WaitingList setSurgeonToWaitingList(@PathVariable Long surgeonId, @PathVariable Long waitingListId) {
 		return waitingListService.setSurgeonToWaitingList(surgeonId, waitingListId);
 	}
 	
-	//To be edited
-	@DeleteMapping(value="{waitingListId}/surgeon/{surgeonId}/remove")
-	public WaitingList unsetSurgeonFromWaitingList(@PathVariable Long surgeonId, @PathVariable Long waitingListId) {
-		return waitingListService.unsetSurgeonToWaitingList(surgeonId, waitingListId);
+	
+	@PutMapping(value="{waitingListId}/unset-surgeon")
+	public WaitingList unsetSurgeonFromWaitingList( @PathVariable Long waitingListId) {
+		return waitingListService.unsetSurgeonToWaitingList( waitingListId);
 	}
 	
 	

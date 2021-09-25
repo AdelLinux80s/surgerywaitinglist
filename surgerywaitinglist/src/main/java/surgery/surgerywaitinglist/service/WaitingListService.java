@@ -48,7 +48,7 @@ public class WaitingListService {
 	}
 
 	@Transactional
-	public WaitingList unsetPatientFromWaitingList(Long patientId, Long waitingListId) {
+	public WaitingList unsetPatientFromWaitingList(Long waitingListId) {
 		WaitingList waitingList =  waitingListGetOne(waitingListId);
 		waitingList.setWaitingListPatientId(null);
 		return waitingList;
@@ -60,11 +60,12 @@ public class WaitingListService {
 		Surgeon surgeon = surgeonService.surgeonGetOne(surgeonId);
 		waitingList.setWaitingListSurgeonId(surgeonId);
 		waitingList.setWaitingListDepartmentId(surgeon.getDepartmentIdInSurgery());
+		
 		return waitingList;
 	}
 
 	@Transactional
-	public WaitingList unsetSurgeonToWaitingList(Long surgeonId, Long waitingListId) {
+	public WaitingList unsetSurgeonToWaitingList(Long waitingListId) {
 		WaitingList waitingList =  waitingListGetOne(waitingListId);
 		waitingList.setWaitingListSurgeonId(null);
 		waitingList.setWaitingListDepartmentId(null);
