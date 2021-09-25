@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import surgery.surgerywaitinglist.entity.Patient;
+import surgery.surgerywaitinglist.exception.PatientNotFoundEception;
 import surgery.surgerywaitinglist.repository.PatientRepository;
 
 @Service
@@ -22,7 +23,7 @@ public class PatientService {
 	public Patient patientGetOne(Long patientId) {
 		
 		//exception needed here
-		return patientRepo.findById(patientId).get();
+		return patientRepo.findById(patientId).orElseThrow(() -> new PatientNotFoundEception(patientId));
 	}
 
 	public Patient addPatient(Patient patient) {

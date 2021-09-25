@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import surgery.surgerywaitinglist.entity.Department;
 import surgery.surgerywaitinglist.entity.Surgeon;
+import surgery.surgerywaitinglist.exception.SurgeonNotFoundException;
 import surgery.surgerywaitinglist.repository.SurgeonRepository;
 
 @Service
@@ -26,8 +27,8 @@ public class SurgeonService {
 	}
 
 	public Surgeon surgeonGetOne(Long surgeonId) {
-		//exception to be added here :)
-		return surgeonRepo.findById(surgeonId).get();
+		
+		return surgeonRepo.findById(surgeonId).orElseThrow(() -> new SurgeonNotFoundException(surgeonId));
 	}
 
 	public Surgeon addSurgeon(Surgeon surgeon) {

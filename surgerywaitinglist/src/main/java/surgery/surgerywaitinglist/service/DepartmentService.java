@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import surgery.surgerywaitinglist.entity.Department;
-
+import surgery.surgerywaitinglist.exception.DepartmentNotFoundException;
 import surgery.surgerywaitinglist.repository.DepartmentRepository;
 
 @Service
@@ -24,8 +24,8 @@ public class DepartmentService {
 	}
 
 	public Department departmentGetOne(Long departmentId) {
-		//exception to be added
-		return departmentRepo.findById(departmentId).get();
+		
+		return departmentRepo.findById(departmentId).orElseThrow(() -> new DepartmentNotFoundException(departmentId));
 	}
 
 	public Department addDepartment(Department department) {

@@ -7,8 +7,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import surgery.surgerywaitinglist.entity.Department;
+import surgery.surgerywaitinglist.entity.Patient;
 import surgery.surgerywaitinglist.entity.Surgeon;
 import surgery.surgerywaitinglist.entity.WaitingList;
+import surgery.surgerywaitinglist.exception.SurgeonNotAssignedToDepartment;
+import surgery.surgerywaitinglist.exception.WaitingListNotFoundException;
 import surgery.surgerywaitinglist.repository.WaitingListRepository;
 
 @Service
@@ -18,6 +22,10 @@ public class WaitingListService {
 	private WaitingListRepository waitingListRepo;
 	@Autowired
 	private SurgeonService surgeonService;
+	@Autowired
+	private PatientService patientService;
+	@Autowired
+	private DepartmentService depService;
 
 	public List<WaitingList> waitingListgetAll() {
 		return waitingListRepo.findAll();
@@ -25,8 +33,7 @@ public class WaitingListService {
 
 	public WaitingList waitingListGetOne(Long waitingListId) {
 		
-		// exception to be added here :)
-		return waitingListRepo.findById(waitingListId).get();
+		return waitingListRepo.findById(waitingListId).orElseThrow(() -> new WaitingListNotFoundException(waitingListId));
 	}
 
 	public WaitingList addCaseToWaitingList(WaitingList surgery) {
@@ -42,7 +49,8 @@ public class WaitingListService {
 	@Transactional
 	public WaitingList setPatientToWaitingList(Long patientId, Long waitingListId) {
 		WaitingList waitingList =  waitingListGetOne(waitingListId);
-		waitingList.setWaitingListPatientId(patientId);
+		Patient patient = patientService.patientGetOne(patientId) ;
+		waitingList.setWaitingListPatientId(patient.getPatientId());
 		
 		return waitingList;
 	}
@@ -58,8 +66,16 @@ public class WaitingListService {
 	public WaitingList setSurgeonToWaitingList(Long surgeonId, Long waitingListId) {
 		WaitingList waitingList =  waitingListGetOne(waitingListId);
 		Surgeon surgeon = surgeonService.surgeonGetOne(surgeonId);
+		if(surgeon.getDepartmentIdInSurgery() == null) {
+			throw new SurgeonNotAssignedToDepartment(surgeonId); 
+		}
+		
+		Department department = depService.departmentGetOne(surgeon.getDepartmentIdInSurgery()) ;
+		
+		
+		
 		waitingList.setWaitingListSurgeonId(surgeonId);
-		waitingList.setWaitingListDepartmentId(surgeon.getDepartmentIdInSurgery());
+		waitingList.setWaitingListDepartmentId(department.getDepartmentId());
 		
 		return waitingList;
 	}
