@@ -12,6 +12,7 @@ import surgery.surgerywaitinglist.exception.SurgeonNotFoundException;
 import surgery.surgerywaitinglist.exception.WaitingListNotFoundException;
 
 
+
 @ControllerAdvice
 public class SurgeryControllerAdvice {
 
